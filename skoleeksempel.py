@@ -5,15 +5,15 @@ import requests
 from tqdm import tqdm
 
 print("hello")
-
+'''
 def scrape_links(from_url, for_depth, all_links={}):
     # This is what the exercise below asks you to implement!
     pass
+'''
 
+#start_url = 'https://www.version2.dk/artikel/google-deepmind-vi-oeger-sikkerheden-mod-misbrug-sundhedsdata-1074452'
 
-start_url = 'https://www.version2.dk/artikel/google-deepmind-vi-oeger-sikkerheden-mod-misbrug-sundhedsdata-1074452'
-
-link_dict = scrape_links(from_url=start_url, for_depth=2)
+#link_dict = scrape_links(from_url=start_url, for_depth=2)
 
 def dump(a_dict):
     with open('./internet.py', 'w') as out_file:
@@ -60,7 +60,7 @@ def scrape_links(from_url, for_depth, all_links={}):
 
 start_url = 'https://www.version2.dk/artikel/google-deepmind-vi-oeger-sikkerheden-mod-misbrug-sundhedsdata-1074452'
 
-link_dict = scrape_links(from_url=start_url, for_depth=2)
+link_dict = scrape_links(from_url=start_url, for_depth=1)
 
 print('{} pages link to {} other pages'.format(len(list(link_dict.keys())), 
                                                len(flatten(link_dict.values()))))
