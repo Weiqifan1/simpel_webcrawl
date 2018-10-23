@@ -3,30 +3,42 @@ import os
 import sys
 import requests
 import re
-#import urllib2
+
+# bs4 cheatsheet. http://akul.me/blog/2016/beautifulsoup-cheatsheet/
 
 
-def find_links():
-    URL = 'https://en.wikipedia.org/wiki/Python_(programming_language)'
+def get_html_page(url):
 
-    response = requests.get(URL)
-    # print(response.text)
-# Exception hvis 404 eller brug if html_page.ok
-# html_page.raise_for_status()
+    try:
+        if url.startswith('https://'):
+            response = requests.get(url)
+        else:
+            new_url = 'https:' + url
+            response = requests.get(new_url)
+    
+        # Exception hvis 404 eller brug if response.ok
+        response.raise_for_status()
 
-#links = []
+        # If no error make soup object with links.
+        soup_link_list(response)
+    except:
+        # Handle bad links.
+        print('fsfsf')
 
-    soup = bs4.BeautifulSoup(response.text, 'html5lib')
-    # print(soup)
 
-# <a href="(.*)".'?
+# Make a soup object with all links.
+def soup_link_list(response):
+    soup = bs4.BeautifulSoup(response.text, 'html5lib') # html5lib er den parser vi bruger.
 
     links = soup.select("a[href]")
-    print(links)
+    # print(links)
     for a in links:
         text = a["href"]
         #regex = re.compile(r'<a href="(.*)".*?').findall(text)
         print(text)
 
 
-find_links()
+
+
+url = 'https://en.wikipedia.org/wiki/Python_(programming_language)'
+get_html_page(url)
