@@ -30,12 +30,16 @@ def get_html_page(url):
 def soup_link_list(response):
     soup = bs4.BeautifulSoup(response.text, 'html5lib') # html5lib er den parser vi bruger.
 
-    links = soup.select("a[href]")
-    # print(links)
-    for a in links:
-        text = a["href"]
+    all_a_tags = soup.select("a[href]")
+    #print(all_a_tags)
+    for a in all_a_tags:
+        links = a["href"]
         #regex = re.compile(r'<a href="(.*)".*?').findall(text)
-        print(text)
+        print(links)
+        
+    print('END')
+    for url in links:
+        get_html_page(url)
 
 
 
