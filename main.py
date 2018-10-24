@@ -3,42 +3,26 @@ import os
 import sys
 import requests
 import re
+import time
+import bs4simple as bs
 
-# bs4 cheatsheet. http://akul.me/blog/2016/beautifulsoup-cheatsheet/
+# godt link: https://www.digitalocean.com/community/tutorials/how-to-crawl-a-web-page-with-scrapy-and-python-3
 
-
-def get_html_page(url):
-
-    try:
-        if url.startswith('https://'):
-            response = requests.get(url)
-        else:
-            new_url = 'https:' + url
-            response = requests.get(new_url)
-    
-        # Exception hvis 404 eller brug if response.ok
-        response.raise_for_status()
-
-        # If no error make soup object with links.
-        soup_link_list(response)
-    except:
-        # Handle bad links.
-        print('fsfsf')
+# 'http://www.begravelseholbaek.dk/links.php'
+#'https://en.wikipedia.org/wiki/Python_(programming_language)'
 
 
-# Make a soup object with all links.
-def soup_link_list(response):
-    soup = bs4.BeautifulSoup(response.text, 'html5lib') # html5lib er den parser vi bruger.
+number_of_generations = 2
 
-    links = soup.select("a[href]")
-    # print(links)
-    for a in links:
-        text = a["href"]
-        #regex = re.compile(r'<a href="(.*)".*?').findall(text)
-        print(text)
+url = 'http://www.begravelseholbaek.dk/links.php'
 
 
+start_time = time.time()
 
+start_list = []
+start_list.append(url)
+print(len(bs.my_chr2(start_list, number_of_generations)))
 
-url = 'https://en.wikipedia.org/wiki/Python_(programming_language)'
-get_html_page(url)
+elapsed_time = time.time() - start_time
+pretty_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+print(pretty_time)
