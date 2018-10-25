@@ -4,21 +4,25 @@ import re
 import time
 import bs4
 from tqdm import tqdm
+import dictlist as dl
 # bs4 cheatsheet. http://akul.me/blog/2016/beautifulsoup-cheatsheet/
 
 
-def my_chr2(list_ofNums, repeat, old_links = None):
+def create_dictlist(list_ofNums, repeat, old_links = None):
     if old_links == None:
-        old_links = []
+        old_links = dl.Dictlist()#[]
+        list_ofNums = dl.Dictlist(list_ofNums)
         print("****Scraping started..." + str(repeat) + " generations****")
     if repeat > 0:
-        new_list = []
-        for item in tqdm(list_ofNums):
-            if item not in old_links:
-               new_list = new_list + _get_html_page(item) 
-               old_links.append(item)
-        new_list = list(set(new_list)) #removes duplicates
-        return my_chr2(new_list, repeat-1, old_links)
+        new_list = dl.Dictlist()#[]
+        new_list.pub_dict = list_ofNums.pub_dict
+        for item in tqdm(list_ofNums.pub_list):
+            if item not in old_links.pub_list:
+               new_list.append_item(item)
+               new_list.append_list(item, _get_html_page(item))
+               old_links.append_item(item)
+        new_list.pub_list = list(set(new_list.pub_list))
+        return create_dictlist(new_list, repeat-1, old_links)
     else:
         print("****Scraping finished****")
         return list_ofNums

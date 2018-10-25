@@ -1,28 +1,35 @@
-import bs4
-import os
-import sys
-import requests
-import re
-import time
-import bs4simple as bs
-
-# godt link: https://www.digitalocean.com/community/tutorials/how-to-crawl-a-web-page-with-scrapy-and-python-3
-
-# 'http://www.begravelseholbaek.dk/links.php'
-#'https://en.wikipedia.org/wiki/Python_(programming_language)'
 
 
-number_of_generations = 2
+'''
+2018-10-25 - kl. 19.27:
+chr: jeg har lavet en ny klasse "dictlist"
+metoden create_dictlist i bs4dictionary
+tager en liste af hjemmesider (strings)
+som skal crawles, samt en integer (antal søge generationer)
 
-url = 'http://www.begravelseholbaek.dk/links.php'
+den returnese et dictlist objekt som skal
+indeholde en liste med samtlige links der er fundet,
+samt en dictionary hvor values
+er alle "child" links og
+keys er alle "parent" links.
 
+for eksempel:
+    hvis man køre den med 1 generationer,
+    får man start linket som key og alle
+    de fundne links som values.
+    f.eks. 1 key med 8 values.
 
-start_time = time.time()
+    køre man den med 2 generatioer, får man
+    9 keys og 71 values
+    
+    71 values er også det totale amtal links in objektets liste.
+    Det betyder at nogle af 8 1. generations links,
+    selv linker tilbage til start linket, som dermed bliver en value.
+        Jeg har forsøgt at undgå dette ved at have et "old_links"
+        argument, men det ser ikke ud til at virke. 
 
-start_list = []
-start_list.append(url)
-print(len(bs.my_chr2(start_list, number_of_generations)))
+'''
 
-elapsed_time = time.time() - start_time
-pretty_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
-print(pretty_time)
+import temp_run_bs4dict as tempBS
+
+tempBS.run()
