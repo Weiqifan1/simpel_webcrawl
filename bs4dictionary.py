@@ -19,13 +19,46 @@ def create_dictlist(list_ofNums, repeat, old_links = None):
         for item in tqdm(list_ofNums.pub_list):
             if item not in old_links.pub_list:
                new_list.append_item(item)
-               new_list.append_list(item, _get_html_page(item))
+                                            #funktion der fjerne non-wordpress
+               new_list.append_list(item, remove_startswith(_get_html_page(item)))
                old_links.append_item(item)
         new_list.pub_list = list(set(new_list.pub_list))
         return create_dictlist(new_list, repeat-1, old_links)
     else:
         print("****Scraping finished****")
         return list_ofNums
+
+
+########################################################## remove non wordpress -- start
+#2018-10-26 - fjerner vlaues der ikke starter med https://progtest591184608.wordpress.com/page
+#replace:   new_list.append_list(item, remove_startswith(_get_html_page(item)))
+#with:      new_list.append_list(item, _get_html_page(item))
+
+def remove_startswithDict(mydict):
+    newdict = {}
+    unwant = "https://progtest591184608.wordpress.com/page"
+    key_list = []
+    for key, value in mydict.items():
+        key_list.append(key)
+        #print(key_list)
+    for key in key_list:
+        value_set = mydict[key]
+        new_set = []
+        for mylink in value_set:
+            if mylink.startswith(unwant):
+                new_set.append(mylink)
+        newdict[key] = new_set
+    return newdict
+
+def remove_startswith(listOfLinks):
+    unwant = "https://progtest591184608.wordpress.com/page"
+    new_list = []
+    for item in listOfLinks:
+        if item.startswith(unwant):
+            new_list.append(item)
+    return new_list
+
+######################################################remove non wordpress -- end
 
 def _get_html_page(url):
     try:

@@ -22,7 +22,9 @@ def run():
     start_list = []
     start_list.append(url)
     scrape_result = bs.create_dictlist(start_list, number_of_generations)
+    #print(scrape_result.pub_dict)
 
+    
     print("total number of links: " + str(len(scrape_result.pub_list)))
     print("number of unique links: " + str(len(list(set(scrape_result.pub_list)))))
     key_list = []
@@ -42,6 +44,8 @@ def run():
     elapsed_time = time.time() - start_time
     pretty_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
     print(pretty_time)
+
+    print(scrape_result.pub_dict)
 
     #generations resultater med siden: # 'https://progtest591184608.wordpress.com/page-1-first-generation-link/'
     #gammel version (kun lister, ingen dictionary)
