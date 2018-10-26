@@ -22,6 +22,39 @@ def run():
     start_list = []
     start_list.append(url)
     scrape_result = bs.create_dictlist(start_list, number_of_generations)
+       
+
+    elapsed_time = time.time() - start_time
+    pretty_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+    print(pretty_time)
+
+
+    #generations resultater med siden: # 'https://progtest591184608.wordpress.com/page-1-first-generation-link/'
+    #gammel version (kun lister, ingen dictionary)
+    #1 8 68 1392
+    # ny version med dictionary: (muligvis forkert):
+    # 1 9 71 1412/1413
+
+
+
+
+'''
+
+def run():
+    #mulige hjemmesider (men mange links:)
+    #'https://en.wikipedia.org/wiki/Python_(programming_language)'
+    # 'https://progtest591184608.wordpress.com/page-1-first-generation-link/'
+
+    number_of_generations = 2
+
+    #2018-10-25: chr: jeg har forsoegt at lave en wordpress side med få links:
+    url = 'https://progtest591184608.wordpress.com/page-1-first-generation-link/'
+
+    start_time = time.time()
+
+    start_list = []
+    start_list.append(url)
+    scrape_result = bs.create_dictlist(start_list, number_of_generations)
     #print(scrape_result.pub_dict)
 
     
@@ -52,3 +85,4 @@ def run():
     #1 8 68 1392
     # ny version med dictionary: (muligvis forkert):
     # 1 9 71 1412/1413
+'''
