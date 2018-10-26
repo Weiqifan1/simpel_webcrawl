@@ -20,9 +20,15 @@ def create_dictlist(list_ofNums, repeat, old_links = None):
             if item not in old_links.pub_list:
                 new_list.append_item(item)
                 #nyt forsoeg:
-                                    #funktion der fjerne non-wordpress
+                                    #funktion der fjerne non-wordpress links
+                                    # når man bruger https://progtest591184608.wordpress.com/page-1-first-generation-link/
+                                    # som første link:
+                                    # list_of_all_children = remove_startswith(_get_html_page(item))
+
+                                    #til produktion, brug:
+                                    # list_of_all_children = _get_html_page(item)
                 list_of_all_children = remove_startswith(_get_html_page(item))
-                
+
                 temp_child = []
                 for thing in list_of_all_children:
                     if thing not in old_links.pub_list:
