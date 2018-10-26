@@ -18,10 +18,18 @@ def create_dictlist(list_ofNums, repeat, old_links = None):
         new_list.pub_dict = list_ofNums.pub_dict
         for item in tqdm(list_ofNums.pub_list):
             if item not in old_links.pub_list:
-               new_list.append_item(item)
-                                            #funktion der fjerne non-wordpress
-               new_list.append_list(item, remove_startswith(_get_html_page(item)))
-               old_links.append_item(item)
+                new_list.append_item(item)
+                #nyt forsoeg:
+                                    #funktion der fjerne non-wordpress
+                list_of_all_children = remove_startswith(_get_html_page(item))
+                
+                temp_child = []
+                for thing in list_of_all_children:
+                    if thing not in old_links.pub_list:
+                          temp_child.append(thing)                       
+                new_list.append_list(item, temp_child)
+                #end of forsoeg:
+                old_links.append_item(item)
         new_list.pub_list = list(set(new_list.pub_list))
         return create_dictlist(new_list, repeat-1, old_links)
     else:
