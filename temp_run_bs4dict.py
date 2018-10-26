@@ -5,6 +5,7 @@ import requests
 import re
 import time
 import pickle
+import networkx as nx
 import bs4dictionary as bs
 import dictlist as dl
 
@@ -37,7 +38,16 @@ def run():
     infile.close()
     print(deserial_dict == scrape_result.pub_dict) # skal gerne være true
 
-    
+    # vi laver en networks illustration:
+    G = nx.Graph() #chr: stopper her 2018-10-26 kl. 21.02
+
+    # https://app.peergrade.io/student/courses/5ba0b82d0d113e000ed7257b/assignments/5bcf0fd8d6617100108dc0da/overview
+    # https://github.com/datsoftlyngby/dat4sem2018fall-python/blob/master/assignments/assignment6.md
+    # https://networkx.github.io/
+    # https://networkx.github.io/documentation/stable/tutorial.html
+    # https://networkx.github.io/documentation/stable/tutorial.html#directed-graphs
+    # https://networkx.github.io/documentation/stable/tutorial.html#drawing-graphs
+
 
     elapsed_time = time.time() - start_time
     pretty_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
