@@ -1,8 +1,3 @@
-import bs4
-import os
-import sys
-import requests
-import re
 import time
 import pickle
 import networkx as nx

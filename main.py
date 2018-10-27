@@ -1,4 +1,6 @@
-
+'''
+To run the project: python main.py
+'''
 import library.create_digraph as create
 
 
