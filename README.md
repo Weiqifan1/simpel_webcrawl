@@ -30,5 +30,4 @@ pip install networkx
 
 ## Result
 
-
-
+![alt text](https://github.com/Weiqifan1/simpel_webcrawl/blob/developer/Figure_1_dont_delete.png)  
