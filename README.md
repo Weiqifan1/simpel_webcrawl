@@ -1,24 +1,28 @@
-# simpel_webcrawl
-2018-10-23-python simpelt webcraweksempel - gruppe ImpossibleCollege
+# Simpel Webcrawler by ImpossibleCollege
 
-python kursus - 2018-10-23
-gruppe impossible college
+## Documentation  
+With the help of BeautifulSoup, write a web crawler that collects links from websites recursively. Make use of the networkx package to visualize the graph of links. You want to create a DiGraph.  
 
-https://github.com/BoMarconiHenriksen/dat4sem2018fall-python/blob/master/lecture_notes/18-Web%20Scraping%20Basics.ipynb
+Link to the assignment. https://github.com/datsoftlyngby/dat4sem2018fall-python/blob/master/assignments/assignment6.md  
 
-opgave til næste gang: 
-skriv en simpel web crawler.
-Med beautiful soup.
+Link to lecture notes on BeautifulSoup. https://github.com/BoMarconiHenriksen/dat4sem2018fall-python/blob/master/lecture_notes/18-Web%20Scraping%20Basics.ipynb  
 
-Find alle links på siden,
-find alle de sider disse sider linker til
-vi vælger sælg den dybde vi vil stoppe ved.
-(vi skal finde en måde at undgå uendelige løgger hvor siderne linker tilbage til den gamle)
+## Group
+Anders Nissen, Christian Lykke and Bo Henriksen.  
 
-Linkene lægger vi i en flad dictioanry (key er url, value er en liste ad de urls som key linker til).
+## How to run the project
+1. Clone the project
 
-Vi skal lave et billede som afspejler det vi har fundet,
-dvs vi skal lave en "directed graph".
+2. Cd into the directory of the project
 
+3. python main.py
 
-Det vil give mening at vi ikke gør det serielt, men prøver at parallelisere søgningen.
+## Dependencies
+The project use dependencies which is part of Pythons Anaconda installation and the following 2 dependencies.
+
+pip install tqdm  
+pip install networkx  
+
+## Result
+
+![alt text](https://github.com/Weiqifan1/simpel_webcrawl/blob/developer/Figure_1_dont_delete.png)  
