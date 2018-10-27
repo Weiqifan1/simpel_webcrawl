@@ -19,3 +19,4 @@ class Dictlist:
         for item in mylist:
             self.pub_list.append(item)
         self.pub_dict[mykey] = mylist
+        
