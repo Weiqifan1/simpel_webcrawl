@@ -6,6 +6,7 @@ import re
 import time
 import pickle
 import networkx as nx
+import matplotlib.pyplot as plt
 import bs4dictionary as bs
 import dictlist as dl
 
@@ -37,9 +38,17 @@ def run():
     deserial_dict = pickle.load(infile)
     infile.close()
     print(deserial_dict == scrape_result.pub_dict) # skal gerne være true
+    print(deserial_dict)
 
     # vi laver en networks illustration:
-    G = nx.Graph() #chr: stopper her 2018-10-26 kl. 21.02
+    DG = nx.DiGraph(deserial_dict, rank="source") 
+    
+    nx.draw(DG)
+    plt.savefig("graph.png")
+    plt.show()
+    
+
+
 
     # https://app.peergrade.io/student/courses/5ba0b82d0d113e000ed7257b/assignments/5bcf0fd8d6617100108dc0da/overview
     # https://github.com/datsoftlyngby/dat4sem2018fall-python/blob/master/assignments/assignment6.md
