@@ -45,12 +45,11 @@ def _get_html_page(url):
 
 def _soup_link_list(response):
     soup = bs4.BeautifulSoup(response.text, 'html5lib') # html5lib er den parser vi bruger.
-    links = soup.select("a[href]")
-    list = []
-    for a in links:
-        text = a["href"]
-        #print(text)
-        list.append(text)
+    
+    # soup.select("a[href]") contains all links including tags found with css selector.
+    # Then we find the link without tag and href and appened it to the list.
+    list = [ a["href"] for a in soup.select("a[href]") ] 
+    
     return list
 
 
