@@ -17,6 +17,10 @@ Anders Nissen, Christian Lykke and Bo Henriksen.
 
 3. python main.py
 
+You can change the url to webscrape from in main.py  
+
+You can change the depths of the webscraper in main.py by changing the variable number_of_generations.  
+
 ## Dependencies
 The project use dependencies which is part of Pythons Anaconda installation and the following 2 dependencies.
 
