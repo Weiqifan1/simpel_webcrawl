@@ -1,5 +1,4 @@
-# Simpel webcrawler
-Simpel webcrawler by ImpossibleCollege
+# Simpel Webcrawler by ImpossibleCollege
 
 ## Documentation  
 With the help of BeautifulSoup, write a web crawler that collects links from websites recursively. Make use of the networkx package to visualize the graph of links. You want to create a DiGraph.  
